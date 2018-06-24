@@ -44,6 +44,7 @@ public class TemplateHelper {
         request.setAttribute("init", baseDataInitVO);
         Map webSite = baseDataInitVO.getWebSite();
         String baseUrl = setBaseUrl(request, staticBlog, webSite);
+        //过期
         request.setAttribute("webs", webSite);
         request.setAttribute("searchUrl", baseUrl + Constants.getArticleUri() + "search");
         String title = webSite.get("title") + " - " + webSite.get("second_title");

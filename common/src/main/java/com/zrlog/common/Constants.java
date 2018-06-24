@@ -37,6 +37,7 @@ public class Constants {
     public static String DATE_FORMAT_PATTERN = "yyyy-MM-dd HH:mm:ssXXX";
     public static final Map<String, Object> webSite = Collections.synchronizedMap(new HashMap<String, Object>());
     public static boolean IN_JAR = new File("webapp").exists();
+    public static String FTL_VIEW_PATH = "/view";
 
     public static String pluginServer;
 

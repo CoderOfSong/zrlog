@@ -2,6 +2,7 @@ package com.zrlog.web.interceptor;
 
 import com.jfinal.aop.Interceptor;
 import com.jfinal.aop.Invocation;
+import com.jfinal.render.FreeMarkerRender;
 import com.zrlog.service.CacheService;
 import com.zrlog.util.ZrLogUtil;
 import com.zrlog.web.config.ZrLogConfig;
@@ -31,7 +32,7 @@ public class InitDataInterceptor implements Interceptor {
     private void doIntercept(Invocation invocation) {
         //未安装情况下无法设置缓存
         if (!ZrLogConfig.isInstalled()) {
-            invocation.getController().render("/install/index" + ZrLogConfig.getTemplateExt());
+            invocation.getController().render(new FreeMarkerRender("/install/index.ftl"));
         } else {
             if (invocation.getController() instanceof BaseController) {
                 HttpServletRequest request = invocation.getController().getRequest();

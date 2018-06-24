@@ -3,6 +3,7 @@ package com.zrlog.web.interceptor;
 import com.jfinal.aop.Interceptor;
 import com.jfinal.aop.Invocation;
 import com.jfinal.core.JFinal;
+import com.jfinal.render.FreeMarkerRender;
 import com.zrlog.common.Constants;
 import com.zrlog.web.config.ZrLogConfig;
 import com.zrlog.web.controller.BaseController;
@@ -20,7 +21,7 @@ public class BlackListInterceptor implements Interceptor {
     @Override
     public void intercept(Invocation invocation) {
         if (!ZrLogConfig.isInstalled() && "/".equals(invocation.getController().getRequest().getRequestURI())) {
-            invocation.getController().render("/install/index" + ZrLogConfig.getTemplateExt());
+            invocation.getController().render(new FreeMarkerRender("/install/index.ftl"));
         } else {
             if (invocation.getController() instanceof BaseController) {
                 BaseController baseController = (BaseController) invocation.getController();
